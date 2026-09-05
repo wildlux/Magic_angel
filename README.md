@@ -9,3 +9,4 @@ Quando hai avviato il software comparirà così.
 -> Locale:  http://localhost:8000
 -> In rete: http://192.168.1.65:8000
 Premi Ctrl+C per arrestare.
+# Magic_angel
