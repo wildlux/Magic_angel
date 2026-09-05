@@ -1,0 +1,7 @@
+
+Configurazione Google Sheets
+
+1) Apri Google Sheets > Estensioni > Apps Script
+
+Incolla il codice che trovi in questa cartella e impostalo come deploy.
+Cambia il link del deploy per il tuo account.
