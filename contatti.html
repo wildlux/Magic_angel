@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Magic Angel - Scrivici</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="contatti">
+
+    <section class="contact-section page-container">
+        <h2>Customer Care</h2>
+        <form class="contact-form" id="contactForm">
+            <p class="contact-intro">Per info o assistenza, scrivici!</p>
+            <table class="contact-info-table">
+                <tr>
+                    <td class="icon">📍</td>
+                    <td><a id="address-link" href="#" target="_blank" rel="noopener"><span id="address"></span>, <span id="city"></span> (<span id="province"></span>)</a></td>
+                </tr>
+                <tr>
+                    <td class="icon">📞</td>
+                    <td><a id="phone" href="tel:+393331234567">+39 333 123 4567</a></td>
+                </tr>
+                <tr>
+                    <td class="icon">✉️</td>
+                    <td><a id="email" href="mailto:assistenza@magicangel.it">assistenza@magicangel.it</a></td>
+                </tr>
+            </table>
+            <input type="text" placeholder="Il tuo Nome" required>
+            <input type="email" placeholder="La tua Email" required>
+            <textarea placeholder="Come possiamo aiutarti?" rows="3" required></textarea>
+            <button type="submit" class="btn btn-white">Invia Messaggio</button>
+        </form>
+    </section>
+
+    <footer>
+        <p id="footer-text"></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

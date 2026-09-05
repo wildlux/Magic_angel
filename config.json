@@ -1,0 +1,48 @@
+{
+    "product": {
+        "name": "Struccante Bifasico Magic Angel",
+        "desc": "Formula Ultra-Delicata per occhi e viso. Elimina il trucco, anche quello waterproof, in una sola passata.",
+        "size": "500ml - Made in Italy",
+        "price": "Solo 7,90€",
+        "offer": "Offerta di Lancio per la nuova apertura!"
+    },
+    "dialog": {
+        "donna1": "Giulia",
+        "donna2": "Sara"
+    },
+    "contact": {
+        "address": "Via Roma 69",
+        "city": "Milano",
+        "province": "MI",
+        "phone": "+39 333 123 4567",
+        "email": "assistenza@magicangel.it",
+        "footerText": "© 2026 Magic Angel. Tutti i diritti riservati. | Sito creato per esercitazione"
+    },
+    "media": {
+        "mobileHero": "REFERENCE/locandina.jpeg",
+        "desktopHero": "REFERENCE/LOGO.png"
+    },
+    "stores": {
+        "ios": "https://apps.apple.com/it/app/magic-angel/id123456789",
+        "android": "https://play.google.com/store/apps/details?id=com.magicangel.app"
+    },
+    "faq": [
+        {
+            "question": "Come funziona il Contact Center?",
+            "answer": "Il nostro servizio clienti è attivo via email e telefono. Puoi inviarci una richiesta tramite il modulo nella pagina Contatti e ti risponderemo entro 24 ore."
+        },
+        {
+            "question": "Quanto dura la spedizione?",
+            "answer": "La spedizione standard dura 2-3 giorni lavorativi. Il pagamento è semplice e sicuro."
+        },
+        {
+            "question": "È adatto a pelli sensibili?",
+            "answer": "Sì! La formula è ultra-delicata e testata per pelli sensibili e occhi."
+        },
+        {
+            "question": "Come posso pagare?",
+            "answer": "Accettiamo carte di credito, PayPal e bonifico bancario."
+        }
+    ],
+    "googleFormUrl": ""
+}
