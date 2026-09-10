@@ -1,8 +1,12 @@
 :root {
     --primary-gold: #C5A059;
+    --primary-gold-dark: #a68342;
     --bg-pink: #FDF2F5;
+    --primary-pink: #ffb6c1;
     --text-dark: #333333;
+    --text-muted: #666666;
     --white: #ffffff;
+    --border-gold: rgba(197, 160, 89, 0.25);
 }
 
 * {
@@ -27,14 +31,9 @@ h1, h2, h3 {
     color: var(--primary-gold);
 }
 
-/* Spazio per l'header fisso */
-.page-container {
-    padding-top: 120px;
-    padding-bottom: 60px;
-    flex: 1;
-}
-
-/* ---- Header & Menu Navigazione ---- */
+/* ==========================================
+   HEADER & MENU
+   ========================================== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
     padding-top: env(safe-area-inset-top);
@@ -53,12 +52,10 @@ header {
     padding: 10px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    z-index: 1002; /* Assicura che il menu non venga coperto */
 }
 
 .logo-header {
-    max-width: 150px;
+    max-width: 140px;
     display: block;
 }
 
@@ -70,20 +67,19 @@ header {
     cursor: pointer;
     color: var(--text-dark);
     padding: 10px;
-    touch-action: manipulation; /* Evita ritardi/zoom sul tap mobile */
-    user-select: none;
+    touch-action: manipulation;
     z-index: 1001;
 }
 
 nav {
     display: flex;
-    gap: 30px;
+    gap: 25px;
 }
 
 nav a {
     text-decoration: none;
     color: var(--text-dark);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
@@ -94,17 +90,15 @@ nav a {
     transition: 0.2s;
 }
 
-nav a.active, nav a:hover {
+nav a.active,
+nav a:hover {
     color: var(--primary-gold);
     border-bottom: 2px solid var(--primary-gold);
 }
 
-/* ---- Media Query per Mobile (Menu Hamburger) ---- */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
+/* ---- Menu Mobile (hamburger) ---- */
+@media (max-width: 900px) {
+    .menu-toggle { display: block; }
     nav {
         position: absolute;
         top: 100%;
@@ -114,69 +108,192 @@ nav a.active, nav a:hover {
         flex-direction: column;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.35s ease;
         gap: 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         z-index: 1001;
     }
-
-    nav.active {
-        max-height: 400px;
-    }
-
+    nav.active { max-height: 600px; }
     nav a {
         padding: 15px 20px;
         width: 100%;
         border-top: 1px solid #eee;
         text-align: center;
+        justify-content: center;
         border-bottom: none;
-        min-height: 48px;
     }
-
-    nav a.active {
-        border-bottom: none;
-        background-color: var(--bg-pink);
-    }
+    nav a.active { background-color: var(--bg-pink); }
 }
 
-/* ---- Hero Section (Solo sfondo rosa) ---- */
+/* ==========================================
+   HERO
+   ========================================== */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background-color: var(--bg-pink);
-    padding-top: 80px;
+    padding: 120px 20px 60px;
 }
 
 .hero-content {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     padding: 40px;
     border-radius: 15px;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     border-left: 5px solid var(--primary-gold);
 }
 
 .hero-content p {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    text-align: left;
+}
+
+.hero-content .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
     margin-bottom: 25px;
-    font-size: 1.2rem;
-    font-weight: 300;
+    color: var(--primary-gold);
+    text-align: center;
 }
 
-.hero-content .btn {
-    margin-top: 10px;
+/* Logo che appare al click */
+.logo-reveal {
+    display: none;
+    max-width: 220px;
+    width: 100%;
+    margin: 25px auto 15px;
+    animation: fadeIn 0.6s ease-in;
 }
 
-/* ---- Sezione Prodotto (Stile Dialog-Box) ---- */
+.logo-reveal.visible { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   BOTTONI
+   ========================================== */
+.btn {
+    padding: 14px 28px;
+    background-color: var(--primary-gold);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: var(--primary-gold-dark);
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-gold);
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-gold-dark);
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   LAYOUT SEZIONI
+   ========================================== */
+.page-container {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    flex: 1;
+}
+
+.fun-section,
+.faq-section,
+.contact-section,
 .product-section {
     background-color: var(--bg-pink);
+    padding: 60px 20px;
+    flex: 1;
+    padding-top: 120px;
     text-align: center;
-    padding: 80px 20px;
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container h2,
+.faq-section h2,
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.container > p,
+.contact-section > p {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* ==========================================
+   DIALOG BOX (blocchi bianchi con bordo oro)
+   ========================================== */
+.dialog-box {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 700px;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--primary-gold);
+    text-align: left;
+}
+
+.dialog-box p {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* ==========================================
+   PRODOTTO
+   ========================================== */
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -193,7 +310,7 @@ nav a.active, nav a:hover {
 }
 
 .product-image {
-    max-width: 400px;
+    max-width: 300px;
     width: 100%;
     border-radius: 10px;
 }
@@ -204,64 +321,20 @@ nav a.active, nav a:hover {
 }
 
 .product-info h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 .price {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--primary-gold);
     font-weight: bold;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
-.btn {
-    padding: 15px 30px;
-    background-color: var(--primary-gold);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn:hover {
-    background-color: #a68342;
-    transform: scale(1.05);
-}
-
-/* ---- Radio Spot & Dialoghi ---- */
-.fun-section {
-    background-color: var(--bg-pink);
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.dialog-box {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 600px;
-    margin: 20px auto 0;
-    font-style: italic;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid var(--primary-gold);
-    text-align: left;
-}
-
-/* ---- FAQ Accordion (Stile Dialog-Box per ogni item) ---- */
-.faq-section {
-    background-color: var(--bg-pink);
-    padding: 80px 20px;
-}
-
+/* ==========================================
+   FAQ
+   ========================================== */
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
@@ -283,13 +356,14 @@ nav a.active, nav a:hover {
     border: none;
     text-align: left;
     padding: 20px 0;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 48px;
+    color: var(--text-dark);
 }
 
 .faq-question::after {
@@ -307,6 +381,7 @@ nav a.active, nav a:hover {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    padding-left: 5px;
 }
 
 .faq-answer p {
@@ -314,20 +389,11 @@ nav a.active, nav a:hover {
     color: var(--text-dark);
 }
 
-/* ---- Contatti (Form in Dialog-Box + Tabella invisibile) ---- */
-.contact-section {
-    background-color: var(--bg-pink);
-    color: var(--text-dark);
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.contact-section h2 {
-    color: var(--primary-gold);
-}
-
+/* ==========================================
+   CONTATTI
+   ========================================== */
 .contact-form {
-    max-width: 450px;
+    max-width: 500px;
     margin: 30px auto;
     background: var(--white);
     padding: 30px;
@@ -339,25 +405,21 @@ nav a.active, nav a:hover {
 
 .contact-intro {
     margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: var(--text-dark);
+    font-size: 1.05rem;
+    text-align: center;
+    font-weight: 500;
 }
 
-/* Tabella contatti invisibile per allineare le icone */
 .contact-info-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background: transparent;
-    border: none;
 }
 
 .contact-info-table td {
-    padding: 8px 0;
-    border: none;
+    padding: 10px 0;
     text-align: left;
     vertical-align: middle;
-    background: transparent;
 }
 
 .contact-info-table .icon {
@@ -365,61 +427,115 @@ nav a.active, nav a:hover {
     font-size: 1.2rem;
     text-align: center;
     color: var(--primary-gold);
-    background: transparent;
 }
 
-/* Link cliccabili nella tabella contatti (Maps, Tel, Mail) */
 .contact-info-table a {
     color: var(--primary-gold);
     text-decoration: none;
     font-weight: 600;
-    transition: 0.2s;
 }
 
 .contact-info-table a:hover {
     text-decoration: underline;
-    color: #a68342;
 }
 
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-    background: var(--bg-pink);
-    font-size: 16px;
-    min-height: 48px;
-}
-
-.btn-white {
-    background-color: var(--primary-gold);
-    color: var(--white);
-    width: 100%;
-    margin-top: 10px;
-}
-
-/* ---- Google Form (contenitore e iframe) ---- */
-#google-form-container {
-    max-width: 800px;
-    margin: 40px auto 0;
-    padding: 20px;
-}
-
-#google-form-container h3 {
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-#google-form-iframe {
-    width: 100%;
-    height: 800px;
-    border: none;
+/* ==========================================
+   OPINIONI
+   ========================================== */
+.opinione {
+    background: var(--white);
+    padding: 20px 25px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--primary-gold);
+    text-align: left;
 }
 
-/* ---- Footer ---- */
+.opinione .stelle {
+    color: #ffc107;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.opinione .testo {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.opinione .nome {
+    font-weight: 600;
+    color: var(--primary-gold);
+    text-align: right;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   SOCIAL
+   ========================================== */
+.social-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.social-item:last-child { border-bottom: none; }
+
+.social-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icon { font-size: 1.6rem; }
+
+.social-name {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-gold);
+    font-size: 1rem;
+}
+
+.social-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.social-btn {
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.social-btn:hover { text-decoration: underline; }
+
+/* ==========================================
+   SPOT / VIDEO
+   ========================================== */
+.video-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 25px;
+    aspect-ratio: 16 / 9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
 footer {
     background-color: #2b2b2b;
     color: #aaa;
@@ -429,3 +545,10 @@ footer {
     padding-bottom: env(safe-area-inset-bottom);
     margin-top: auto;
 }
+
+/* ==========================================
+   BOTTONI STORE (iOS / Android)
+   ========================================== */
+.store-btn { display: none; }
+body.os-ios .ios-only { display: inline-block; }
+body.os-android .android-only { display: inline-block; }

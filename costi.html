@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Magic Angel - Costi</title>
     <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="costi">
 
-    <!-- L'header viene generato automaticamente da script.js -->
-
-    <section class="fun-section page-container">
+    <section class="fun-section">
         <div class="container">
             <h2>Quanto costa?</h2>
+            <p>Scopri il prezzo di lancio del nostro struccante</p>
+
             <div class="dialog-box">
-                <h3>Struccante Bifasico 500ml</h3>
+                <h3 style="margin-bottom: 15px;">Struccante Bifasico 500ml</h3>
                 <div class="price" id="product-price">Solo 7,90€</div>
-                <p id="product-desc">Formula Ultra-Delicata. Elimina il trucco waterproof in una sola passata.</p>
-                <br>
-                <a href="prodotto.html" class="btn">Vai al Prodotto</a>
+                <p id="product-desc" style="margin-top: 15px; font-style: normal;">
+                    Formula Ultra-Delicata. Elimina il trucco waterproof in una sola passata.
+                </p>
+                <p id="product-offer" style="color: var(--primary-gold); font-weight: 600; margin-top: 15px; font-style: normal;"></p>
+                <div style="text-align: center;">
+                    <a href="prodotto.html" class="btn">Vai al Prodotto</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p id="footer-text"></p>
-    </footer>
+    <footer></footer>
 
     <script src="script.js"></script>
 </body>

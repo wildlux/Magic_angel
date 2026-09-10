@@ -3,24 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Magic Angel - Home</title>
     <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="home">
 
+    <!-- L'header viene generato automaticamente da script.js -->
+
     <section class="hero">
         <div class="hero-content">
-            <p id="site-tagline">Lo struccante che fa sparire il trucco... e, almeno per qualche minuto, anche i problemi!</p>
-            <a href="prodotto.html" class="btn">Scopri l'offerta</a>
+            <div class="hero-title">Il miracolo Magic Angel</div>
+
+            <p><strong><span id="donna1">Giulia</span>:</strong> Ma dimmi una cosa... tuo marito è a casa stasera?</p>
+            <p><strong><span id="donna2">Sara</span>:</strong> No, ha detto che aveva una cena di lavoro. Perché?</p>
+            <p><strong><span id="donna1-2">Giulia</span>:</strong> Perché... anche il mio mi ha detto la stessa cosa.</p>
+            
+            <p class="sfx">[Silenzio improvviso. Un bicchiere che cade.]</p>
+            
+            <p><strong><span id="donna2-2">Sara</span>:</strong> Aspetta. Il tuo... si chiama Marco?</p>
+            <p><strong><span id="donna1-3">Giulia</span>:</strong> Sì.</p>
+            <p><strong><span id="donna2-3">Sara</span>:</strong> Alto, capelli scuri, profumo troppo costoso?</p>
+            <p><strong><span id="donna1-4">Giulia</span>:</strong> Sì...</p>
+            <p><strong><span id="donna2-4">Sara</span>:</strong> ...E porta sempre quella camicia blu?</p>
+            <p><strong><span id="donna1-5">Giulia</span>:</strong> Sì!</p>
+            <p><strong><span id="donna2-5">Sara</span>:</strong> Oddio.</p>
+            
+            <p class="finale">"E il miracolo arriva: Magic Angel!"</p>
+
+            <br>
+
+            <!-- Logo che appare al click -->
+            <img src="REFERENCE/LOGO.png" alt="Magic Angel" class="logo-reveal" id="logo-rivelato">
+
+            <div style="text-align: center;">
+                <button class="btn" onclick="toggleLogo()">Scopri l'offerta</button>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p id="footer-text"></p>
-    </footer>
+    <footer></footer>
 
-    <!-- Carica PRIMA il menù, POI il resto dello script -->
     <script src="script.js"></script>
 </body>
 </html>

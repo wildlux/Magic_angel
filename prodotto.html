@@ -3,36 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Magic Angel - Prodotto</title>
     <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="prodotto">
 
-    <!-- L'header viene generato automaticamente da script.js -->
-
-    <section class="product-section page-container">
-        <div id="status-message" class="loading-message" style="text-align: center; padding: 40px; font-size: 1.1rem; color: #C5A059;">
-            Caricamento dati in corso...
-        </div>
-
-        <div class="product-container" id="product-card" style="display: none;">
+    <section class="product-section">
+        <div class="product-container" id="product-card">
             <img src="REFERENCE/Soluzione.jpeg" alt="Struccante Bifasico Magic Angel" class="product-image">
             <div class="product-info">
-                <h2 id="product-name"></h2>
+                <h2 id="product-name">Caricamento...</h2>
                 <p id="product-desc"></p>
                 <p id="product-size"></p>
                 <div class="price" id="product-price"></div>
                 <p id="product-offer" style="font-size: 0.9rem; color: #666;"></p>
-                <!-- Pulsante trasformato in link -->
                 <a href="contatti.html" class="btn">Acquista Ora</a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p id="footer-text"></p>
-    </footer>
+    <footer></footer>
 
     <script src="script.js"></script>
 </body>

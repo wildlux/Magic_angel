@@ -14,55 +14,28 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 # ==========================================
 PORT = 8000
 
-# URL del tuo Web App Google Apps Script
-APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9wmxU0wdiLqzcbggycp1vTMX15GrHqN-TZM_LPbczIWWynIKviM7iv3UsAESS1uh2XA/exec"
+# ⚠️ INCOLLA QUI L'URL DEL TUO WEB APP APPS SCRIPT
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwc9wghe3aoKxf0IxBiqvnAyyyxuWkF0wuATI7Ho2zX/exec"
 
 CACHE = {}
 CACHE_DURATION = 60  # secondi
 
 
 # ==========================================
-# FETCH DA GOOGLE APPS SCRIPT (con diagnostica)
+# FETCH DA APPS SCRIPT
 # ==========================================
 def fetch_config():
-    """Scarica il config JSON dal Web App di Google (versione diagnostica)."""
     try:
-        res = requests.get(
-            APPS_SCRIPT_URL,
-            timeout=15,
-            allow_redirects=True,
-            headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"},
-        )
-        
-        # === DIAGNOSTICA ===
-        print("\n" + "=" * 55)
-        print("DIAGNOSTICA GOOGLE APPS SCRIPT")
-        print("=" * 55)
-        print(f"Status code:      {res.status_code}")
-        print(f"Content-Type:     {res.headers.get('Content-Type', 'sconosciuto')}")
-        print(f"URL finale:       {res.url}")
-        print(f"Lunghezza:        {len(res.text)} caratteri")
-        print("-" * 55)
-        print("PRIMI 500 CARATTERI DELLA RISPOSTA:")
-        print(res.text[:500])
-        print("=" * 55 + "\n")
-        
-        # Prova a parsare come JSON
-        try:
-            data = res.json()
-            print(f"[OK] JSON parsato correttamente.")
-            return data
-        except Exception as json_err:
-            print(f"[ERRORE JSON] {json_err}")
-            return None
-            
+        # allow_redirects=True è IMPORTANTE: Apps Script risponde con un 302
+        res = requests.get(APPS_SCRIPT_URL, timeout=15, allow_redirects=True)
+        res.raise_for_status()
+        return res.json()
     except Exception as e:
         print(f"[ERRORE FETCH] {e}")
         return None
 
 
 def get_config_cached():
-    """Restituisce il config dalla cache se valido, altrimenti lo rigenera."""
     now = time.time()
     if "config" in CACHE and now - CACHE["timestamp"] < CACHE_DURATION:
         return CACHE["config"]
@@ -78,11 +51,11 @@ def get_config_cached():
 
 
 # ==========================================
-# HANDLER HTTP
+# SERVER HTTP
 # ==========================================
 class CustomHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
-        # --- ROTTA: /config.json ---
+        # Rotta /config.json
         if self.path == "/config.json" or self.path.startswith("/config.json?"):
             try:
                 config = get_config_cached()
@@ -101,7 +74,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(f'{{"error": "{e}"}}'.encode("utf-8"))
             return
 
-        # --- ROTTA: /api/refresh ---
+        # Rotta /api/refresh
         if self.path == "/api/refresh":
             CACHE.clear()
             self.send_response(200)
@@ -110,7 +83,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
             self.wfile.write(b'{"status": "cache cleared"}')
             return
 
-        # --- CACHE BUSTING per i file HTML ---
+        # Cache busting HTML
         if self.path.endswith(".html") or self.path == "/":
             file_path = self.translate_path(self.path)
             if os.path.exists(file_path) and os.path.isfile(file_path):
@@ -119,14 +92,11 @@ class CustomHandler(SimpleHTTPRequestHandler):
                         content = f.read()
 
                     version = str(int(time.time()))
-
-                    # Aggiunge ?v=... ai CSS
                     content = re.sub(
                         r'(<link[^>]+href=")([^"?]+\.css)(")',
                         lambda m: f"{m.group(1)}{m.group(2)}?v={version}{m.group(3)}",
                         content,
                     )
-                    # Aggiunge ?v=... ai JS
                     content = re.sub(
                         r'(<script[^>]+src=")([^"?]+\.js)(")',
                         lambda m: f"{m.group(1)}{m.group(2)}?v={version}{m.group(3)}",
@@ -137,31 +107,26 @@ class CustomHandler(SimpleHTTPRequestHandler):
                     self.send_header("Content-Type", "text/html; charset=utf-8")
                     self.send_header("Content-Length", str(len(content.encode("utf-8"))))
                     self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
-                    self.send_header("Pragma", "no-cache")
-                    self.send_header("Expires", "0")
                     self.end_headers()
                     self.wfile.write(content.encode("utf-8"))
                     return
                 except Exception as e:
                     print(f"[ERRORE HTML] {e}")
 
-        # --- FILE STATICI (CSS, JS, immagini) ---
         super().do_GET()
 
     def log_message(self, format, *args):
-        # Silenzia i log delle richieste statiche
         pass
 
 
 # ==========================================
-# SERVER RIUTILIZZABILE
+# SERVER RIUTILIZZABILE (fix porta occupata)
 # ==========================================
 class ReusableHTTPServer(HTTPServer):
     allow_reuse_address = True
 
 
 def get_local_ip():
-    """Rileva l'IP reale della macchina sulla LAN."""
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         s.connect(("8.8.8.8", 80))
@@ -179,8 +144,7 @@ def avvia_server():
     try:
         httpd = ReusableHTTPServer(("0.0.0.0", PORT), CustomHandler)
     except OSError:
-        print(f"[ERRORE] La porta {PORT} è già occupata da un altro processo.")
-        print("        Prova: sudo fuser -k 8000/tcp")
+        print(f"[ERRORE] La porta {PORT} è già occupata.")
         sys.exit(1)
 
     print("=" * 55)
@@ -195,11 +159,9 @@ def avvia_server():
     print("  Ctrl+C       ->  Esci")
     print("=" * 55)
 
-    # Primo fetch per popolare la cache
     print("\n[PYTHON] Caricamento iniziale da Google Apps Script...")
     get_config_cached()
 
-    # Avvia il server in un thread separato per permettere l'input da tastiera
     server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     server_thread.start()
 
@@ -207,19 +169,19 @@ def avvia_server():
         while True:
             cmd = input().strip().lower()
             if cmd == "r":
-                print("\n[OK] Riavvio + ricarico config da Google...\n")
+                print("\n[OK] Riavvio + ricarico config...\n")
                 CACHE.clear()
                 httpd.shutdown()
                 httpd.server_close()
                 avvia_server()
                 break
             elif cmd == "q":
-                print("\n[OK] Uscita dal server.")
+                print("\n[OK] Uscita.")
                 httpd.shutdown()
                 httpd.server_close()
                 sys.exit(0)
     except KeyboardInterrupt:
-        print("\n\n[OK] Server arrestato manualmente (Ctrl+C).")
+        print("\n\n[OK] Server arrestato (Ctrl+C).")
         httpd.shutdown()
         httpd.server_close()
         sys.exit(0)

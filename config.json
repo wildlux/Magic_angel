@@ -18,22 +18,22 @@
         "email": "assistenza@magicangel.it",
         "footerText": "© 2026 Magic Angel. Tutti i diritti riservati. | Sito creato per esercitazione"
     },
-    "media": {
-        "mobileHero": "REFERENCE/locandina.jpeg",
-        "desktopHero": "REFERENCE/LOGO.png"
-    },
     "stores": {
         "ios": "https://apps.apple.com/it/app/magic-angel/id123456789",
         "android": "https://play.google.com/store/apps/details?id=com.magicangel.app"
     },
+    "links": {
+        "videoGiusy": "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER",
+        "googleForm": "https://docs.google.com/forms/d/e/TUO_ID_FORM/viewform"
+    },
     "faq": [
         {
             "question": "Come funziona il Contact Center?",
-            "answer": "Il nostro servizio clienti è attivo via email e telefono. Puoi inviarci una richiesta tramite il modulo nella pagina Contatti e ti risponderemo entro 24 ore."
+            "answer": "Il nostro servizio clienti è attivo via email e telefono. Puoi inviarci una richiesta tramite il modulo nella pagina Scrivici."
         },
         {
             "question": "Quanto dura la spedizione?",
-            "answer": "La spedizione standard dura 2-3 giorni lavorativi. Il pagamento è semplice e sicuro."
+            "answer": "La spedizione standard dura 2-3 giorni lavorativi."
         },
         {
             "question": "È adatto a pelli sensibili?",
@@ -44,5 +44,21 @@
             "answer": "Accettiamo carte di credito, PayPal e bonifico bancario."
         }
     ],
-    "googleFormUrl": ""
+    "opinioni": [
+        {
+            "nome": "Francesca R.",
+            "stelle": 5,
+            "testo": "Finalmente uno struccante che toglie tutto senza bruciare gli occhi! Consigliatissimo."
+        },
+        {
+            "nome": "Martina L.",
+            "stelle": 5,
+            "testo": "Il mio trucco waterproof sparisce in un secondo. E il profumo è divino!"
+        },
+        {
+            "nome": "Sara B.",
+            "stelle": 4,
+            "testo": "Prodotto ottimo, spedizione veloce. Tornerò ad acquistare!"
+        }
+    ]
 }

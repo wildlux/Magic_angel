@@ -3,32 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Magic Angel - Contatti & Recensioni</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Magic Angel - Scrivici</title>
     <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="contatti">
 
-    <section class="fun-section page-container">
+    <!-- L'header viene generato automaticamente da script.js -->
+
+    <section class="contact-section">
         <div class="container">
-            <h2>Scrivici o Lascia una Recensione</h2>
-            <p>Vuoi lasciarci un'opinione sul sito o inviarci un messaggio? Compila il modulo online!</p>
-            
-            <div class="dialog-box" style="text-align: center; margin-top: 25px;">
-                <!-- Sostituisci il valore dell'href con il link 'Invia' del tuo Google Form -->
-                <a href="https://docs.google.com/forms/d/e/TUO_ID_FORM/viewform" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   style="display: inline-block; padding: 14px 28px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem;">
+            <h2>Scrivici</h2>
+            <p>Per info, assistenza o per lasciarci un feedback, compila il modulo!</p>
+
+            <div class="contact-form">
+                <p class="contact-intro">Per info o assistenza, scrivici!</p>
+
+                <!-- Tabella contatti: indirizzo, telefono, email -->
+                <table class="contact-info-table">
+                    <tr>
+                        <td class="icon">📍</td>
+                        <td>
+                            <a id="address-link" href="#" target="_blank" rel="noopener">
+                                <span id="address">Via Roma 69</span>,
+                                <span id="city">Milano</span>
+                                (<span id="province">MI</span>)
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="icon">📞</td>
+                        <td><a id="phone" href="tel:+393331234567">+39 333 123 4567</a></td>
+                    </tr>
+                    <tr>
+                        <td class="icon">✉️</td>
+                        <td><a id="email" href="mailto:assistenza@magicangel.it">assistenza@magicangel.it</a></td>
+                    </tr>
+                </table>
+
+                <!-- Pulsante che apre il modulo Google in una nuova scheda -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScZo2JgQ1HhEF4EajHuxCqq9IYmIhxVlHYBYqtQuB916ul4PQ/viewform?usp=dialog"
+                   id="google-form-link"
+                   class="btn-primary"
+                   target="_blank"
+                   rel="noopener">
                     ✍️ Apri Modulo di Contatto
                 </a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p id="footer-text"></p>
-    </footer>
+    <footer></footer>
 
     <script src="script.js"></script>
 </body>
